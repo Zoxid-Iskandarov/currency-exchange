@@ -1,0 +1,2 @@
+### Расчёт перевода определённого количества средств из одной валюты в другую
+GET http://localhost:8085/currency-exchange/exchange?from=USD&to=RUB&amount=10

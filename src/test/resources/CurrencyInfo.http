@@ -1,0 +1,2 @@
+### Получение конкретной валюты
+GET http://localhost:8085/currency-exchange/currency/USD

@@ -1,0 +1,7 @@
+CREATE TABLE currency
+(
+    id   BIGSERIAL PRIMARY KEY,
+    code CHAR(3)      NOT NULL UNIQUE,
+    name VARCHAR(100) NOT NULL,
+    sign VARCHAR(3)   NOT NULL UNIQUE
+);

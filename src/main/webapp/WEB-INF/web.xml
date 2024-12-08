@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+    
+    <listener>
+        <listener-class>com.walking.currencyExchanger.listener.AddAttributesContextListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>com.walking.currencyExchanger.listener.DataBaseMigrationContextListener</listener-class>
+    </listener>
+
+    <filter>
+        <filter-name>EncodingFilter</filter-name>
+        <filter-class>com.walking.currencyExchanger.filter.EncodingFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>ResponseJsonSerializerFilter</filter-name>
+        <filter-class>com.walking.currencyExchanger.filter.ResponseJsonSerializerFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>EncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>ResponseJsonSerializerFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>CurrencyManagementServlet</servlet-name>
+        <servlet-class>com.walking.currencyExchanger.servlet.CurrencyManagementServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CurrencyInfoServlet</servlet-name>
+        <servlet-class>com.walking.currencyExchanger.servlet.CurrencyInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ExchangeRateManagementServlet</servlet-name>
+        <servlet-class>com.walking.currencyExchanger.servlet.ExchangeRateManagementServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ExchangeRateInfoServlet</servlet-name>
+        <servlet-class>com.walking.currencyExchanger.servlet.ExchangeRateInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ExchangerServlet</servlet-name>
+        <servlet-class>com.walking.currencyExchanger.servlet.ExchangerServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>CurrencyManagementServlet</servlet-name>
+        <url-pattern>/currencies</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CurrencyInfoServlet</servlet-name>
+        <url-pattern>/currency/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExchangeRateManagementServlet</servlet-name>
+        <url-pattern>/exchangeRates</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExchangeRateInfoServlet</servlet-name>
+        <url-pattern>/exchangeRate/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExchangerServlet</servlet-name>
+        <url-pattern>/exchange</url-pattern>
+    </servlet-mapping>
+</web-app>

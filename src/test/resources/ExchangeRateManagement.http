@@ -1,0 +1,9 @@
+### Получение списка всех обменных курсов
+GET http://localhost:8085/currency-exchange/exchangeRates
+
+### Добавление нового обменного курса в базу.
+POST http://localhost:8085/currency-exchange/exchangeRates
+Content-Type: application/x-www-form-urlencoded
+
+baseCurrencyCode=USD&targetCurrencyCode=RUB&rate=77.2
+

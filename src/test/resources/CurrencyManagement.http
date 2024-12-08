@@ -1,0 +1,15 @@
+### Получение списка валют
+GET http://localhost:8085/currency-exchange/currencies
+
+### Добавление новой валюты в базу
+POST http://localhost:8085/currency-exchange/currencies
+Content-Type: application/x-www-form-urlencoded
+
+code=USD&name=US Dollar&sign=$
+
+### Добавление новой валюты в базу
+POST http://localhost:8085/currency-exchange/currencies
+Content-Type: application/x-www-form-urlencoded
+
+code=RUB&name=Russian Ruble&sign=₽
+

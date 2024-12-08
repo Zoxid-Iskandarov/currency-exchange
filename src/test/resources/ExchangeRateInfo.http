@@ -1,0 +1,8 @@
+### Получение конкретного обменного курса. Валютная пара задаётся идущими подряд кодами валют в адресе запроса
+GET http://localhost:8085/currency-exchange/exchangeRate/USDRUB
+
+### Обновление существующего в базе обменного курса
+PATCH http://localhost:8085/currency-exchange/exchangeRate/USDRUB
+Content-Type: application/x-www-form-urlencoded
+
+rate=80
