@@ -8,6 +8,7 @@ import com.walking.currencyExchanger.repository.ExchangeRateRepository;
 import com.walking.currencyExchanger.validator.ParameterValidator;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -15,6 +16,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.math.BigDecimal;
 
+@MultipartConfig
 public class ExchangeRateInfoServlet extends HttpServlet {
     private ExchangeRateRepository repository;
     private ExchangeRateDtoMapper mapper;
@@ -60,7 +62,7 @@ public class ExchangeRateInfoServlet extends HttpServlet {
         }
 
         try {
-            var rate = new BigDecimal(req.getParameter("rate"));
+            var rate = new BigDecimal(ParameterValidator.getStringFromPartName(req, "rate"));
 
             exchangeRate.setRate(rate);
             var updatedExchangeRate = repository.update(exchangeRate);

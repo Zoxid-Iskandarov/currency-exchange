@@ -3,6 +3,10 @@ GET http://localhost:8085/currency-exchange/exchangeRate/USDRUB
 
 ### Обновление существующего в базе обменного курса
 PATCH http://localhost:8085/currency-exchange/exchangeRate/USDRUB
-Content-Type: application/x-www-form-urlencoded
+Content-Type: multipart/form-data; boundary=boundary
 
-rate=80
+--boundary
+Content-Disposition: form-data; name="rate"
+
+80
+--boundary--
