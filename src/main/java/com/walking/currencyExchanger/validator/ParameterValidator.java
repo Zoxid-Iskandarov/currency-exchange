@@ -12,9 +12,15 @@ public class ParameterValidator {
     private static final int CURRENCIES_CODES_LENGTH = 6;
 
     public static boolean checkCurrencyParameter(String code, String name, String sign) {
-        return code == null || code.length() != CODE_LENGTH
-               || name == null || name.isEmpty() || name.length() > NAME_MAX_LENGTH
-               || sign == null || sign.isEmpty() || sign.length() > MAX_SIGN_LENGTH;
+        if (code == null || name == null || sign == null) {
+            return true;
+        }
+
+        if (code.isEmpty() || name.isEmpty() || sign.isEmpty()) {
+            return true;
+        }
+
+        return code.length() != CODE_LENGTH || name.length() > NAME_MAX_LENGTH || sign.length() > MAX_SIGN_LENGTH;
     }
 
     public static boolean checkExchangeParameter(String currencyCodes) {
@@ -22,8 +28,11 @@ public class ParameterValidator {
     }
 
     public static boolean checkExchangeParameter(String baseCurrencyCode, String targetCurrencyCode, BigDecimal rate) {
-        return baseCurrencyCode == null || baseCurrencyCode.length() != CODE_LENGTH
-                || targetCurrencyCode == null || targetCurrencyCode.length() != CODE_LENGTH
-                || rate == null || rate.compareTo(BigDecimal.ZERO) < 0;
+        if (baseCurrencyCode == null || targetCurrencyCode == null || rate == null) {
+            return true;
+        }
+
+        return baseCurrencyCode.length() != CODE_LENGTH || targetCurrencyCode.length() != CODE_LENGTH
+               || rate.compareTo(BigDecimal.ZERO) < 0;
     }
 }
